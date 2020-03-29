@@ -1,5 +1,4 @@
 import 'package:covid19_tracker/ui/HomeScreen.dart';
-import 'package:covid19_tracker/ui/More.dart';
 import 'package:covid19_tracker/ui/News.dart';
 import 'package:flutter/material.dart';
 
@@ -19,8 +18,6 @@ class _HomePageState extends State<HomePage> {
       case 1:
         return Health();
         break;
-      case 2:
-        return More();
     } 
   }
 
@@ -38,10 +35,6 @@ class _HomePageState extends State<HomePage> {
             BottomNavigationBarItem(
               icon: Icon(Icons.chrome_reader_mode),
               title: Text('News'),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.mail),
-              title: Text('About'),
             ),
           ],
           currentIndex: _currentIndex,

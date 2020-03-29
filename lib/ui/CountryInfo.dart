@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class CountryInfo extends StatefulWidget {
   var data, index;
@@ -9,7 +10,27 @@ class CountryInfo extends StatefulWidget {
 }
 
 class _CountryInfoState extends State<CountryInfo> {
-  var data, index, title = "";
+
+  _launchURL() async {
+  const url = 'https://www.who.int/emergencies/diseases/novel-coronavirus-2019';
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
+
+
+ _launchURL1() async {
+  const url = 'https://www.worldometers.info/coronavirus/';
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
+
+  var data, index;
   _CountryInfoState(this.data, this.index);
 
   @override
@@ -210,11 +231,18 @@ class _CountryInfoState extends State<CountryInfo> {
         ),
 
         FlatButton(
-          onPressed: (){},
-         child: Text("Learn More",
-         style: TextStyle(
-           color: Colors.deepPurple,
-         ),
+          onPressed: (){
+            _launchURL();
+          },
+         child: FlatButton(
+           onPressed: () {
+             _launchURL1();
+           },
+                    child: Text("Learn More",
+           style: TextStyle(
+             color: Colors.deepPurple,
+           ),
+           ),
          ),
         )
 
